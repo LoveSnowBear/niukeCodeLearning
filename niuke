@@ -1,3 +1,24 @@
-1.java中复制预算是有返回值的，返回值即为赋值的数值
+1.java中赋值运算是有返回值的，返回值即为赋值的数值
 2.finally中有return语句，当try执行到return时会执行finally中的代码，其中有return 就直接返回了
-3..finally中不含return语句，那么当执行到return时，它会被保存等待finally执行完毕后返回，这个时候无论finally内部如何改变这个值，都不会影响返回结果！
+3.finally中不含return语句，那么当执行到return时，它会被保存等待finally执行完毕后返回，这个时候无论finally内部如何改变这个值，都不会影响返回结果！
+4.Applet类是浏览器类库中最为重要的类，同时也是所有java小应用程序的基本类。在编写Applet程序时，首先必须引入java.applet.Applet包。 一个Applet应用程序从开始运行到结束时所经历的过程被称为Applet的生命周期。Applet的生命周期涉及init()、start()、stop()和destroy()四种方法，这4种方法都是Applet类的成员。 1、 public void init() init()方法是Applet运行的起点。当启动Applet程序时，系统首先调用此方法，以执行初始化任务。 2、public void start() start()方法是表明Applet程序开始执行的方法。当含有此Applet程序的Web页被再次访问时调用此方法。因此，如果每次访问Web页都需要执行一些操作的话，就需要在Applet程序中重载该方法。在Applet程序中，系统总是先调用init()方法，后调用start()方法。 3、 public void stop() stop()方法使Applet停止执行，当含有该Applet的Web页被其他页代替时也要调用该方法。 4、 public void destroy() destroy()方法收回Applet程序的所有资源，即释放已分配给它的所有资源。在Applet程序中，系统总是先调用stop()方法，后调用destroy()方法。5、 paint(Graphics g) paint(Graphics g)方法可以使Applet程序在屏幕上显示某些信息，如文字、色彩、背景或图像等。参数g是Graphics类的一个对象实例，实际上可以把g理解为一个画笔。对象g中包含了许多绘制方法，如drawstring()方法就是输出字符串。 repaint()方法的功能是，程序首先清除paint()方法以前所画的内容，然后再调用paint()方法。 
+5.  init: 该方法的目的是为你的 Applet 提供所需的任何初始化。在 Applet 标记内的 param 标签被处理后调用该方法。
+    start: 浏览器调用 init 方法后，该方法被自动调用。每当用户从其他页面返回到包含 Applet 的页面时，则调用该方法。
+    stop: 当用户从包含 Applet 的页面移除的时候，该方法自动被调用。因此，可以在相同的 Applet 中反复调用该方法。
+    destroy: 此方法仅当浏览器正常关闭时调用。因为 Applet 只有在 HTML 网页上有效，所以你不应该在用户离开包含 Applet 的页面后遗漏任何资源。
+    paint: 该方法在 start() 方法之后立即被调用，或者在 Applet 需要重绘在浏览器的时候调用。paint() 方法实际上继承于 java.awt。
+6.Semaphore：类，控制某个资源可被同时访问的个数;
+  ReentrantLock：类，具有与使用synchronized方法和语句所访问的隐式监视器锁相同的一些基本行为和语义，但功能更强大；
+  Future：接口，表示异步计算的结果；
+  CountDownLatch： 类，可以用来在一个线程中等待多个线程完成任务的类。 
+7. public Method[] getDeclaredMethods()返回类或接口声明的所有方法，包括public, protected, default (package) 访问和private方法的Method对象，但不包括继承的方法。当然也包括它所实现接口的方法。
+public Method[] getMethods()返回类的所有public方法，包括其继承类的公用方法，当然也包括它所实现接口的方法。 
+8.null表示没有地址；null可以赋值给引用变量，不能将null赋给基本类型变量，例如int、double、float、boolean
+9.JDK8及以后，允许我们在接口中定义static方法和default方法。静态方法，只能通过接口名调用，不可以通过实现类的类名或者实现类的对象调用。default方法，只能通过接口实现类的对象来调用。当然如果接口中的默认方法不能满足某个实现类需要，那么实现类可以覆盖默认方法。如果两个接口中定义了一模一样的默认方法，并且一个实现类同时实现了这两个接口，那么必须在实现类中重写默认方法，否则编译失败。public default void defaultMethod(){}  (default不能省略);子类重写接口默认方法时，必须去掉default。
+10.1. 只看尖括号里边的！！明确点和范围两个概念
+   2. 如果尖括号里的是一个类，那么尖括号里的就是一个点，比如List<A>,List<B>,List<Object>
+   3. 如果尖括号里面带有问号，那么代表一个范围，<? extends A> 代表小于等于A的范围，<? super A>代表大于等于A的范围，<?>代表全部范围
+   4. 尖括号里的所有点之间互相赋值都是错，除非是俩相同的点
+   5. 尖括号小范围赋值给大范围，对，大范围赋值给小范围，错。如果某点包含在某个范围里，那么可以赋值，否则，不能赋值
+   7.补充：List既是点也是范围，当表示范围时，表示最大范围 
+
