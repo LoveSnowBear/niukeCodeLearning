@@ -21,4 +21,6 @@ public Method[] getMethods()返回类的所有public方法，包括其继承类�
    4. 尖括号里的所有点之间互相赋值都是错，除非是俩相同的点
    5. 尖括号小范围赋值给大范围，对，大范围赋值给小范围，错。如果某点包含在某个范围里，那么可以赋值，否则，不能赋值
    7.补充：List既是点也是范围，当表示范围时，表示最大范围 
+11.了解Math类常用的函数 Math.pow(a,b); Math.abs(a);Math.sqrt(a);Math.cos();Math.toRadians();
+12.0x80 0x7F 表示-2^7～2^7-1
 
