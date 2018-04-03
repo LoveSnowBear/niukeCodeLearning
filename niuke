@@ -23,7 +23,7 @@ public Method[] getMethods()返回类的所有public方法，包括其继承类�
    7.补充：List既是点也是范围，当表示范围时，表示最大范围 
 11.了解Math类常用的函数 Math.pow(a,b); Math.abs(a);Math.sqrt(a);Math.cos();Math.toRadians();
 12.0x80 0x7F 表示-2^7～2^7-1
-13.JSP 四大作用域： page (作用范围最小)、request、session、application（作用范围最大）。
+13.JSP 四大作用域： page (作用范围最小)、request 、session 、application （作用范围最大）。
     存储在application对象中的属性可以被同一个WEB应用程序中的所有Servlet和JSP页面访问。（属性作用范围最大）存储在session对象中的属性可以被属于同一个会话（浏览器打开直到关闭称为一次会话，且在此期间会话不失效）的所有Servlet和JSP页面访问。存储在request对象中的属性可以被属于同一个请求的所有Servlet和JSP页面访问（在有转发的情况下可以跨页面获取属性值），例如使用PageContext.forward和PageContext.include方法连接起来的多个Servlet和JSP页面。存储在pageContext对象中的属性仅可以被当前JSP页面的当前响应过程中调用的各个组件访问，例如，正在响应当前请求的JSP页面和它调用的各个自定义标签类。 
 14. System是java.lang中的类，out为System中的一个静态成员，out是java.io.PrintStream类的对象，而println()是java.io.PrintStream类的方法，所有可以调用类.静态方法.println()方法。 
 15.垃圾回收主要是针对堆区的回收，因为栈的内存是随着线程释放的，堆区分成三个区：年轻代(Young Generation),老年代(Old Generation),永久代(Permanent Generation,也就是方法区)
@@ -31,4 +31,21 @@ public Method[] getMethods()返回类的所有public方法，包括其继承类�
 16.toLowerCase重新生产一个new String，存放在堆区，但是不改变传入的字符串的值。
 17.又是i=i++,错了很多次了，长记性。
 18.java虚拟机的功能：1.通过classloader寻找和加载class文件，2.解释字节码成为指令并执行，提供class文件的运行环境。3.进行运行期垃圾回收。4.提供与硬件间接交互的平台
-
+19.list.remove()方法有两种调用形式1.remove(int index)：删除index索引下的元素，删除后将数组的下标向前移动。2.remove(Object o)，删除数组中的o元素，因此要注意是Integer对象，还是int基本类型
+20.优化Hibernate所鼓励的7大措施：
+   1.尽量使用many-to-one，避免使用单项one-to-many
+   2.灵活使用单向one-to-many
+   3.不用一对一，使用多对一代替一对一
+   4.配置对象缓存，不使用集合缓存
+   5.一对多使用Bag 多对一使用Set
+   6.继承使用显示多态 HQL:from object polymorphism="exlicit" 避免查处所有对象
+   7.消除大表，使用二级缓存
+21.ThreadLocal的类声明：public class ThreadLocal<T>可以看出ThreadLocal并没有继承自Thread，也没有实现Runnable接口。
+   ThreadLocal类为每一个线程都维护了自己独有的变量拷贝。每个线程都拥有了自己独立的一个变量。
+   所以ThreadLocal重要作用并不在于多线程间的数据共享，而是数据的独立。
+   由于每个线程在访问该变量时，读取和修改的，都是自己独有的那一份变量拷贝，不会被其他线程访问，
+   变量被彻底封闭在每个访问的线程中。所以E对。
+   ThreadLocal中定义了一个哈希表用于为每个线程都提供一个变量的副本
+22.switch支持 int及以下（char， short， byte），String， Enum。原因呢？是因为switch是用来遍历的，所以不能支持float、double。long太大浪费资源？
+23.redirect：请求重定向：客户端行为，本质上为2次请求，地址栏改变，前一次请求对象消失。举例：你去银行办事（forward.jsp），结果告诉你少带了东西，你得先去公安局办(index.html)临时身份证,这时你就会走出银行，自己前往公安局，地址栏变为index.html.
+   forward：请求转发:服务器行为，地址栏不变。举例：你把钱包落在出租车上，你去警察局（forward.jsp）报案，警察局说钱包落在某某公司的出租车上（index.html)，这时你不用亲自去找某某公司的出租车,警察局让出租车自己给你送来，你只要在警察局等就行。所以地址栏不变，依然为forward.jsp
