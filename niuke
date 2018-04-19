@@ -49,3 +49,7 @@ public Method[] getMethods()返回类的所有public方法，包括其继承类�
 22.switch支持 int及以下（char， short， byte），String， Enum。原因呢？是因为switch是用来遍历的，所以不能支持float、double。long太大浪费资源？
 23.redirect：请求重定向：客户端行为，本质上为2次请求，地址栏改变，前一次请求对象消失。举例：你去银行办事（forward.jsp），结果告诉你少带了东西，你得先去公安局办(index.html)临时身份证,这时你就会走出银行，自己前往公安局，地址栏变为index.html.
    forward：请求转发:服务器行为，地址栏不变。举例：你把钱包落在出租车上，你去警察局（forward.jsp）报案，警察局说钱包落在某某公司的出租车上（index.html)，这时你不用亲自去找某某公司的出租车,警察局让出租车自己给你送来，你只要在警察局等就行。所以地址栏不变，依然为forward.jsp
+24.接口里的成员只能是静态常量，用public static final修饰，接口里没有构造器和修饰代码块
+   接口的方法只能是抽象方法、静态方法和默认方法，抽象方法没有方法体，类方法和静态方法都必须实现
+   默认方法必须使用default使用，不能使用static，无论系统是否指定，默认方法总使用public修饰
+25.鉴于受Java 8发布的影响最大的是Java集合框架（Java Collections framework），所以最好练习流API和lambda表达式，用于对列表（Lists）和集合（Collections）数据进行提取、过滤和排序

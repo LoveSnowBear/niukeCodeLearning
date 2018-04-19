@@ -1,1 +1,1 @@
-1.从spring4开始，@profile注解惊醒了重构，使其基于@Conditional和Condition实现
+1.从spring4开始，@profile注解进行了重构，使其基于@Conditional和Condition实现
