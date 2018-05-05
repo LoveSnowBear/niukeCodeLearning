@@ -1,0 +1,5 @@
+1.利用springBootTest进行单元测试，需要加上@runwith和@springBootTest注解
+2.在测试方法上加上@test注解
+3.assert断言如果为false，那么单元测试终止
+4.利用JPARepository可以对方便的进行对数据库的操作
+5.default constructor
