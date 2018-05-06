@@ -3,3 +3,20 @@
 3.assert断言如果为false，那么单元测试终止
 4.利用JPARepository可以对方便的进行对数据库的操作
 5.default constructor
+/**  spring-boot入门  **/
+1.建立一个springBoot项目的HelloWorld:
+      a.建立一个maven工程，并且在pom文件里面建立parent标签管理版本
+      b.引入web依赖spring-boot-starter-web
+      c.如果直接从Main方法中启动spring需要加入plugin，spring-boot-maven-plugin
+      d.编写启动类，在Main方法中启动。SpringApplication.run(App.class,args);
+      e.需要引入tomcat，启动之后访问localhost:8080/req,根据配置的requestMapping请求访问
+      f.测试@RequestMapping，需要在类上加上@RestController标识控制器，不能使用@Controller注解，因为是返回的string
+      g.在项目中不能有相同的RequestMapping
+2.@SpringBootApplication申明让spring boot自动给程序进行必要的配置，默认配置
+  @RestController返回json字符串的数据，直接可以编写RESTFul接口，可以将项目中的实体通过RestController注解返回得到json对象，在界面上可以看到
+3.如果在控制器上加上@RequestMapping注解，那么访问控制器的时候需要加上访问路径
+4.通过maven-build启动项目时报错：Unregistering JMX-exposed beans on shutdown，需要在pom文件中添加spring-boot-starter-tomcat,修改spring-boot-starter改为-web
+5.热部署，在启动部署中添加spring-loader-1.2.4.jar，然后就可修改方法中的代码，但是方法名，注解内容是不能改变的，因为在类加载时就已经在JVM部署了
+6.全局捕获异常，定义捕获异常类，并且添加@ControllerAdvice,定义异常处理方法@ExceptionHandler
+7.maven工程如果出现了感叹号或者×，可以通过eclipse上的problems功能查看当前的问题，并解决。今天出现的问题是maven下载包不完全出错，很难排查
+8.如何建立正确maven工程路径？
