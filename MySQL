@@ -1,0 +1,4 @@
+1.SHOW COLUMNS FROM TABLE = DESCRIBE TABLE
+2.SHOW STATUS 用于显示广泛的服务器状态信息
+3.一般，除非确实需要表中的每个列，否则最好别用*通配符，检索不要的列会降低检索和应用程序的性能
+4.DISTINCT关键字应用于所有的列，SELECT DISTINCT vend_id，prod_price所有行都会查出来
