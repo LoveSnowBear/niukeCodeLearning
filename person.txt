@@ -6,3 +6,20 @@
 收到对方的FIN说明被断开的一方也要没有数据发送并关闭连接了，此时ACK对方的FIN进入TIME_WAIT。然后等2msl连接关闭。 
 需要注意的是，对方ACK自己的FIN后，并不会立即发送FIN而是在应用层关闭连接后才会发送FIN
 CountDownLatch和CyclicBarrier
+sql优化：尽量避免全表扫描，首先考虑where和order by涉及的列上建立索引
+         尽量避免在where子句中对字段进行null值判断，否则将导致引擎放弃索引使用全表扫描，默认值0
+		 尽量避免在where子句中使用!=或者<>操作符
+		 尽量避免在where子句中使用or来连接条件，可以通过union all合并结果集
+		 尽量避免使用in或not in，对于连续的数值可以使用between
+		 尽量避免使用%前置的模糊查询
+		 尽可能的使用 varchar 代替 char ，因为首先变长字段存储空间小，可以节省存储空间，	
+         其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。
+		 并不是所有索引对查询都有效，SQL是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL查询可能不会去利用索引，	
+         如一表中有字段sex，male、female几乎各一半，那么即使在sex上建了索引也对查询效率起不了作用。
+		 很多时候用 exists 代替 in 是一个好的选择：	
+         select num from a where num in(select num from b)	
+         用下面的语句替换：	
+         select num from a where exists(select 1 from b where num=a.num)	
+		 在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，	
+         否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致
+redis 纯内存访问，单线程，非阻塞io，多路复用 因此如果某个命令执行时间过长，会造成其他命令阻塞，对redis来说是致命的
